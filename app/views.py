@@ -18,7 +18,7 @@ def index():
 @app.route("/recipes", methods=['GET', 'POST'])
 def recipes():
     if request.method == 'POST':
-        print(request.get_json(force=True))
+        print(request.get_json())
         mongo.db.recipes.insert_one(request.json)
         return "Recipe added"
     return json.dumps(list(mongo.db.recipes.find()), default=encoder)
