@@ -6,10 +6,10 @@ RUN apk add tzdata && \
     echo "America/New_York" > /etc/timezone && \
     apk del tzdata
 
-WORKDIR /app
-ADD requirements.txt /app
+WORKDIR /app/
+ADD requirements.txt /app/
 RUN pip install -r requirements.txt
-ADD . /app
+ADD . /app/
 
 ENTRYPOINT ["gunicorn", "app:app"]
 CMD ["--bind=0.0.0.0:8080"]
